@@ -1,0 +1,14 @@
+-- Migration: Change date columns to TIMESTAMPTZ to support time storage
+-- This is necessary because DATE columns in Postgres truncate the time part.
+
+-- 1. Update events table
+ALTER TABLE events 
+  ALTER COLUMN date TYPE TIMESTAMPTZ USING date::TIMESTAMPTZ;
+
+-- 2. Update tasks table
+ALTER TABLE tasks 
+  ALTER COLUMN deadline TYPE TIMESTAMPTZ USING deadline::TIMESTAMPTZ;
+
+-- NOTE: After running this, existing "all-day" items that were strictly date-only
+-- will effectively become "midnight UTC" timestamps. The frontend logic is already
+-- prepared to handle these correctly.坐产
