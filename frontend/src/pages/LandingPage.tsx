@@ -77,9 +77,16 @@ export default function LandingPage() {
             </nav>
 
             {/* ===== MOBILE NAV ===== */}
+            {mobileOpen && (
+                <div
+                    className="mobile-nav-backdrop"
+                    style={{ display: 'block' }}
+                    onClick={() => setMobileOpen(false)}
+                />
+            )}
             <div className={`mobile-nav ${mobileOpen ? 'open' : ''}`}>
                 <button className="mobile-nav-close" onClick={() => setMobileOpen(false)}>✕</button>
-                <div className="lang-switcher" style={{ marginBottom: '1rem' }}>
+                <div className="lang-switcher" style={{ marginBottom: '0.5rem' }}>
                     {LANGUAGES.map((lang) => (
                         <button
                             key={lang.code}
@@ -96,7 +103,7 @@ export default function LandingPage() {
                 <a href="#pricing" onClick={(e) => { e.preventDefault(); scrollTo('pricing'); }}>
                     {t('nav.pricing')}
                 </a>
-                <a href="/auth" className="btn btn-primary btn-lg">{t('nav.join')}</a>
+                <a href="/auth" className="btn btn-primary btn-lg" style={{ textAlign: 'center', marginTop: 'var(--spacing-md)' }}>{t('nav.join')}</a>
             </div>
 
             {/* ===== HERO ===== */}
