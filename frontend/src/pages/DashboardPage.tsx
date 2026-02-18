@@ -122,10 +122,10 @@ function DashboardInner() {
 
     const currentOrg = userOrgs.find(o => o.id === activeOrgId);
 
-    // Add geofence nav only for owners, but NOT for Personal Workspace
-    if (currentOrg?.role === 'owner' && currentOrg?.industry !== 'Personal') {
-        navItems.push({ to: '/dashboard/geofence', icon: '📍', label: t('dashboard.nav.geofence'), end: false });
-    }
+    // Geofence tab disabled until mobile app & payments are ready
+    // if (currentOrg?.role === 'owner' && currentOrg?.industry !== 'Personal') {
+    //     navItems.push({ to: '/dashboard/geofence', icon: '📍', label: t('dashboard.nav.geofence'), end: false });
+    // }
 
     // Pending Invites Logic
     const [pendingInvites, setPendingInvites] = useState<any[]>([]);
