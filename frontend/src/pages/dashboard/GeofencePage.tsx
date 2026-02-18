@@ -74,7 +74,13 @@ export default function GeofencePage() {
     };
 
     const handleSaveGeofence = async () => {
-        if (!activeOrgId || !newMarker || !formName.trim()) return;
+        if (!activeOrgId || !newMarker) return;
+
+        if (!formName.trim()) {
+            alert(t('dashboard.geofence.nameRequired', { defaultValue: 'Пожалуйста, введите название геозоны' }));
+            return;
+        }
+
         setSaving(true);
         const { data, error } = await createGeofence(activeOrgId, {
             name: formName.trim(),
@@ -225,7 +231,7 @@ export default function GeofencePage() {
                                     <span>📍 {newMarker.lat.toFixed(5)}, {newMarker.lng.toFixed(5)}</span>
                                 </div>
                                 <div className="geofence-form-actions">
-                                    <button className="btn btn-primary" onClick={handleSaveGeofence} disabled={saving || !formName.trim()}>
+                                    <button className="btn btn-primary" onClick={handleSaveGeofence} disabled={saving}>
                                         {saving ? '...' : t('dashboard.geofence.save')}
                                     </button>
                                     <button className="btn btn-outline" onClick={handleCancelNew}>
