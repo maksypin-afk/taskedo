@@ -122,6 +122,11 @@ function DashboardInner() {
 
     const currentOrg = userOrgs.find(o => o.id === activeOrgId);
 
+    // Add geofence nav only for owners
+    if (currentOrg?.role === 'owner') {
+        navItems.push({ to: '/dashboard/geofence', icon: '📍', label: t('dashboard.nav.geofence'), end: false });
+    }
+
     // Pending Invites Logic
     const [pendingInvites, setPendingInvites] = useState<any[]>([]);
 

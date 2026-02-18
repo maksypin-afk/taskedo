@@ -11,6 +11,7 @@ const CalendarPage = lazy(() => import('./pages/dashboard/CalendarPage'));
 const TeamPage = lazy(() => import('./pages/dashboard/TeamPage'));
 const AnalyticsPage = lazy(() => import('./pages/dashboard/AnalyticsPage'));
 const ProfilePage = lazy(() => import('./pages/dashboard/ProfilePage'));
+const GeofencePage = lazy(() => import('./pages/dashboard/GeofencePage'));
 
 // Loading component
 const PageLoader = () => (
@@ -53,6 +54,11 @@ function App() {
                 <Route path="profile" element={
                     <Suspense fallback={<PageLoader />}>
                         <ProfilePage />
+                    </Suspense>
+                } />
+                <Route path="geofence" element={
+                    <Suspense fallback={<PageLoader />}>
+                        <GeofencePage />
                     </Suspense>
                 } />
             </Route>

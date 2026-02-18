@@ -2632,3 +2632,265 @@
 .kanban-card-desc li {
     margin-bottom: 4px;
 }
+
+/* ========== GEOFENCE PAGE ========== */
+.geofence-page {
+    padding: var(--spacing-2xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.geofence-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.geofence-map-container {
+    height: 480px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.geofence-map-container .leaflet-container {
+    border-radius: var(--radius-lg);
+    z-index: 1;
+}
+
+.geofence-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.geofence-form,
+.geofence-list {
+    padding: var(--spacing-lg);
+}
+
+.geofence-form h3,
+.geofence-list h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.geofence-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.geofence-form-fields label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+.geofence-radius-control {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.geofence-radius-control input[type="range"] {
+    flex: 1;
+    accent-color: var(--color-primary);
+    height: 6px;
+}
+
+.geofence-radius-value {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+    min-width: 60px;
+    text-align: right;
+}
+
+.geofence-coords {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.geofence-form-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.geofence-form-actions .btn {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.geofence-empty {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.geofence-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.geofence-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background var(--transition-fast);
+}
+
+.geofence-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.geofence-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.geofence-item-name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.geofence-item-meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.geofence-delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-md);
+    opacity: 0.5;
+    transition: opacity var(--transition-fast);
+    padding: var(--spacing-xs);
+}
+
+.geofence-delete-btn:hover {
+    opacity: 1;
+}
+
+/* Attendance section */
+.geofence-attendance {
+    padding: var(--spacing-lg);
+}
+
+.geofence-attendance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.geofence-attendance-header h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+}
+
+.geofence-attendance-header input[type="date"] {
+    max-width: 180px;
+}
+
+.geofence-table-wrapper {
+    overflow-x: auto;
+}
+
+.geofence-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+}
+
+.geofence-table th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+
+.geofence-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    white-space: nowrap;
+}
+
+.geofence-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.geofence-employee {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.geofence-time-in {
+    color: #34d399;
+    font-weight: 600;
+}
+
+.geofence-time-out {
+    color: #f87171;
+    font-weight: 600;
+}
+
+/* Geofence responsive */
+@media (max-width: 900px) {
+    .geofence-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .geofence-map-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .geofence-page {
+        padding: var(--spacing-md);
+    }
+
+    .geofence-map-container {
+        height: 280px;
+    }
+
+    .geofence-attendance-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .geofence-attendance-header input[type="date"] {
+        max-width: 100%;
+    }
+}
