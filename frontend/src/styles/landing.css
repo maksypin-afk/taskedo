@@ -1,3 +1,9 @@
+/* ===== PAGE OVERFLOW FIX ===== */
+html,
+body {
+    overflow-x: hidden;
+}
+
 /* ===== NAVBAR ===== */
 .navbar {
     position: fixed;
@@ -601,6 +607,7 @@
 
     .hero-title {
         font-size: var(--font-size-5xl);
+        word-break: break-word;
     }
 
     .hero-subtitle {
@@ -630,6 +637,14 @@
     .footer-grid {
         gap: var(--spacing-xl);
         margin-bottom: var(--spacing-xl);
+    }
+
+    .navbar-actions .btn-primary {
+        min-width: auto;
+    }
+
+    .store-btn {
+        min-width: auto;
     }
 }
 
