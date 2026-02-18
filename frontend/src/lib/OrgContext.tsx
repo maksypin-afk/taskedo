@@ -6,6 +6,7 @@ export interface UserOrg {
     name: string;
     role: string; // 'owner' | 'member' | 'Manager' | 'Employee' etc.
     logo_url?: string | null;
+    industry?: string;
 }
 
 interface OrgContextType {
@@ -58,15 +59,15 @@ export function OrgProvider({ children }: { children: ReactNode }) {
             // 2. Get orgs where user is the owner
             const { data: ownedOrgs } = await supabase
                 .from('organizations')
-                .select('id, name, logo_url')
+                .select('id, name, logo_url, industry')
                 .eq('owner_id', user.id);
 
             // 3. Get orgs from member rows
-            let memberOrgs: Array<{ id: string; name: string; logo_url?: string | null }> = [];
+            let memberOrgs: Array<{ id: string; name: string; logo_url?: string | null; industry?: string }> = [];
             if (memberOrgIds.length > 0) {
                 const { data } = await supabase
                     .from('organizations')
-                    .select('id, name, logo_url')
+                    .select('id, name, logo_url, industry')
                     .in('id', memberOrgIds);
                 memberOrgs = data || [];
             }
@@ -74,7 +75,7 @@ export function OrgProvider({ children }: { children: ReactNode }) {
             // 4. Merge and deduplicate
             const orgMap = new Map<string, UserOrg>();
             for (const org of (ownedOrgs || [])) {
-                orgMap.set(org.id, { id: org.id, name: org.name, role: 'owner', logo_url: org.logo_url });
+                orgMap.set(org.id, { id: org.id, name: org.name, role: 'owner', logo_url: org.logo_url, industry: org.industry });
             }
             for (const org of memberOrgs) {
                 if (!orgMap.has(org.id)) {
@@ -84,7 +85,7 @@ export function OrgProvider({ children }: { children: ReactNode }) {
                     const role = memberRoles.get(org.id) || 'member';
                     // UserOrg interface expects 'owner' | 'member'. We should update interface too or map loosely.
                     // For now, let's cast.
-                    orgMap.set(org.id, { id: org.id, name: org.name, role: role as 'owner' | 'member', logo_url: org.logo_url });
+                    orgMap.set(org.id, { id: org.id, name: org.name, role: role as 'owner' | 'member', logo_url: org.logo_url, industry: org.industry });
                 }
             }
 
