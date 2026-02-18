@@ -76,14 +76,17 @@ export default function GeofencePage() {
     const handleSaveGeofence = async () => {
         if (!activeOrgId || !newMarker || !formName.trim()) return;
         setSaving(true);
-        const result = await createGeofence(activeOrgId, {
+        const { data, error } = await createGeofence(activeOrgId, {
             name: formName.trim(),
             latitude: newMarker.lat,
             longitude: newMarker.lng,
             radius: formRadius,
         });
-        if (result) {
-            setGeofences(prev => [result, ...prev]);
+
+        if (error) {
+            alert(t('dashboard.geofence.saveError', { defaultValue: 'Ошибка сохранения: ' + JSON.stringify(error) }));
+        } else if (data) {
+            setGeofences(prev => [data, ...prev]);
             setNewMarker(null);
             setFormName('');
             setFormRadius(100);

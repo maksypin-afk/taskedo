@@ -43,7 +43,7 @@ export async function fetchGeofences(orgId: string): Promise<DbGeofence[]> {
 export async function createGeofence(
     orgId: string,
     geofence: { name: string; latitude: number; longitude: number; radius: number }
-): Promise<DbGeofence | null> {
+): Promise<{ data: DbGeofence | null; error: unknown }> {
     const { data, error } = await supabase
         .from('geofences')
         .insert({
@@ -58,9 +58,9 @@ export async function createGeofence(
 
     if (error) {
         console.error('createGeofence error:', error);
-        return null;
+        return { data: null, error };
     }
-    return data;
+    return { data, error: null };
 }
 
 export async function updateGeofence(
