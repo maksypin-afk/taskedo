@@ -169,13 +169,11 @@ function DashboardInner() {
                         <div className="logo-icon" style={{ background: currentOrg?.role === 'owner' ? 'linear-gradient(135deg, var(--color-accent), #8b5cf6)' : 'linear-gradient(135deg, #34d399, #06b6d4)' }}>
                             {activeOrgName?.[0]?.toUpperCase() || 'T'}
                         </div>
-                        {sidebarOpen && (
-                            <span style={{ flex: 1, textAlign: 'left', fontSize: '0.9rem', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {activeOrgName || 'Taskedo'}
-                            </span>
-                        )}
-                        {sidebarOpen && userOrgs.length > 1 && (
-                            <span style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)', transform: showOrgSwitcher ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▼</span>
+                        <span className="sidebar-text" style={{ flex: 1, textAlign: 'left', fontSize: '0.9rem', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {activeOrgName || 'Taskedo'}
+                        </span>
+                        {userOrgs.length > 1 && (
+                            <span className="sidebar-text" style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)', transform: showOrgSwitcher ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▼</span>
                         )}
                     </button>
                     <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
@@ -183,7 +181,7 @@ function DashboardInner() {
                     </button>
 
                     {/* Org dropdown */}
-                    {showOrgSwitcher && sidebarOpen && (
+                    {showOrgSwitcher && (
                         <div style={{
                             position: 'absolute', top: '100%', left: 'var(--spacing-md)', right: 'var(--spacing-md)',
                             background: '#111827', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)',
@@ -238,29 +236,36 @@ function DashboardInner() {
                             to={item.to}
                             end={item.end}
                             className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
+                            onClick={() => { if (window.innerWidth <= 768) setSidebarOpen(true); }}
                         >
                             <span className="sidebar-icon">{item.icon}</span>
-                            {sidebarOpen && <span className="sidebar-label">{item.label}</span>}
+                            <span className="sidebar-label sidebar-text">{item.label}</span>
                         </NavLink>
                     ))}
                 </nav>
 
                 <div className="sidebar-footer">
-                    {sidebarOpen && (
-                        <div className="lang-switcher sidebar-lang">
-                            {LANGUAGES.map((lang) => (
-                                <button
-                                    key={lang.code}
-                                    className={`lang-btn ${i18n.language === lang.code ? 'active' : ''}`}
-                                    onClick={() => changeLang(lang.code)}
-                                >
-                                    {lang.label}
-                                </button>
-                            ))}
-                        </div>
-                    )}
+                    <div className="lang-switcher sidebar-lang sidebar-text">
+                        {LANGUAGES.map((lang) => (
+                            <button
+                                key={lang.code}
+                                className={`lang-btn ${i18n.language === lang.code ? 'active' : ''}`}
+                                onClick={() => changeLang(lang.code)}
+                            >
+                                {lang.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </aside>
+
+            {/* Mobile sidebar overlay backdrop */}
+            {!sidebarOpen && (
+                <div
+                    className="sidebar-overlay"
+                    onClick={() => setSidebarOpen(true)}
+                />
+            )}
 
             {/* Main content */}
             <div className="dashboard-main-area">

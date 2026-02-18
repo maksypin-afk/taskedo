@@ -60,6 +60,9 @@ export async function fetchTeam(organizationId: string): Promise<DbTeamMember[]>
                     // Create a copy and only patch non-null values from profile
                     const enriched = { ...member };
                     if (profile.display_name) enriched.name = profile.display_name;
+                    if (profile.avatar_url && profile.avatar_url.includes('supabase')) {
+                        enriched.avatar = profile.avatar_url;
+                    }
                     if (profile.email) enriched.email = profile.email;
                     if (profile.birthday) enriched.birthday = profile.birthday;
                     if (profile.phone) enriched.phone = profile.phone;

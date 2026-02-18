@@ -58,7 +58,7 @@ const TreeNode = ({
                 >
                     <div className="org-card-header">
                         <div className="org-avatar">
-                            {node.avatar && !imgError ? (
+                            {node.avatar && node.avatar.includes('supabase') && !imgError ? (
                                 <img
                                     src={node.avatar}
                                     alt={node.name}

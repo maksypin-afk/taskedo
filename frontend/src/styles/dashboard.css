@@ -23,6 +23,32 @@
     width: 72px;
 }
 
+.sidebar-overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 300;
+    }
+}
+
+/* Hide sidebar text when collapsed (desktop) */
+.sidebar-collapsed .sidebar-text {
+    display: none;
+}
+
+/* Always show sidebar text on mobile when sidebar is visible */
+@media (max-width: 768px) {
+    .sidebar-collapsed .sidebar-text {
+        display: initial;
+    }
+}
+
 .sidebar-header {
     padding: var(--spacing-lg);
     display: flex;
@@ -1783,6 +1809,8 @@
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
+        width: 260px;
+        z-index: 301;
     }
 
     .sidebar-collapsed .sidebar {
@@ -1807,7 +1835,8 @@
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
     }
 
     .kanban-board {
@@ -1819,8 +1848,288 @@
         gap: var(--spacing-md);
     }
 
+    .page-header h1 {
+        font-size: var(--font-size-2xl);
+    }
+
     .profile-layout {
         grid-template-columns: 1fr;
+    }
+
+    /* Topbar compact */
+    .topbar-user-name {
+        display: none;
+    }
+
+    .topbar {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .topbar-actions {
+        gap: var(--spacing-md);
+    }
+
+    /* Notifications dropdown */
+    .notifications-dropdown {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 70vh;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    /* Team invite form */
+    .team-invite-bar {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .team-invite-bar>* {
+        width: 100%;
+    }
+
+    /* Team cards */
+    .team-card-right {
+        flex-wrap: wrap;
+    }
+
+    /* Daily board */
+    .daily-board-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+    }
+
+    .daily-board-post {
+        max-width: 100%;
+    }
+
+    .daily-item {
+        min-width: 200px;
+    }
+
+    /* Analytics */
+    .analytics-top {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .perf-member {
+        width: 120px;
+        min-width: 120px;
+    }
+
+    /* Overview */
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .stat-value {
+        font-size: var(--font-size-2xl);
+    }
+
+    /* Kanban */
+    .kanban-column-header {
+        padding: var(--spacing-md);
+    }
+
+    .kanban-cards {
+        padding: var(--spacing-sm);
+    }
+
+    /* Calendar */
+    .calendar-grid {
+        font-size: var(--font-size-xs);
+    }
+
+    /* Profile form */
+    .profile-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-avatar-card {
+        padding: var(--spacing-xl) !important;
+    }
+
+    .profile-form {
+        padding: var(--spacing-xl) !important;
+    }
+
+    /* Org chart */
+    .org-card {
+        min-width: 240px;
+        padding: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-content {
+        padding: var(--spacing-md);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: var(--spacing-sm) var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .stat-value {
+        font-size: var(--font-size-xl);
+    }
+
+    .stat-label {
+        font-size: var(--font-size-xs);
+    }
+
+    .page-header h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    .page-header p {
+        font-size: var(--font-size-sm);
+    }
+
+    /* Kanban compact */
+    .kanban-card {
+        padding: var(--spacing-md);
+    }
+
+    .kanban-card-header h4 {
+        font-size: var(--font-size-sm);
+    }
+
+    /* Calendar compact */
+    .calendar-day-header {
+        font-size: 0.6rem;
+        padding: var(--spacing-xs);
+    }
+
+    .calendar-day {
+        min-height: 60px;
+        padding: var(--spacing-xs);
+    }
+
+    .calendar-event {
+        font-size: 0.65rem;
+        padding: 1px 3px;
+    }
+
+    /* Team */
+    .team-card-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .team-card-details h3 {
+        font-size: var(--font-size-sm);
+    }
+
+    .team-card-email {
+        font-size: 0.65rem;
+    }
+
+    /* Analytics compact */
+    .perf-member {
+        width: 90px;
+        min-width: 90px;
+        font-size: var(--font-size-xs);
+    }
+
+    .perf-avatar {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        font-size: 0.7rem;
+    }
+
+    .status-bar-label {
+        width: 70px;
+        font-size: var(--font-size-xs);
+    }
+
+    .priority-label {
+        width: 60px;
+        font-size: var(--font-size-xs);
+    }
+
+    .completion-ring {
+        width: 120px;
+        height: 120px;
+    }
+
+    .completion-value {
+        font-size: var(--font-size-2xl);
+    }
+
+    /* Org chart */
+    .org-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .org-children {
+        padding-left: 20px;
+        gap: var(--spacing-sm);
+    }
+
+    /* Daily board */
+    .daily-item {
+        min-width: 180px;
+    }
+
+    .daily-board {
+        padding: var(--spacing-md) !important;
+    }
+
+    /* Overview */
+    .overview-card {
+        padding: var(--spacing-md);
+    }
+
+    .overview-card h3 {
+        font-size: var(--font-size-base);
+    }
+
+    .clock-time {
+        font-size: 2.5rem;
+    }
+
+    .clock-date {
+        font-size: 0.85rem;
+    }
+
+    .weather-icon {
+        font-size: 1.8rem;
+    }
+
+    .weather-temp {
+        font-size: 1.6rem;
     }
 }
 

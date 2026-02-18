@@ -5,7 +5,7 @@ import { fetchTeam } from '../../lib/teamService';
 
 import type { DbTask } from '../../lib/taskService';
 import type { DbTeamMember } from '../../lib/teamService';
-import { getInitials, isUploadedAvatar } from '../../lib/utils';
+import { getInitials } from '../../lib/utils';
 
 import { useOrg } from '../../lib/OrgContext';
 
@@ -142,10 +142,10 @@ export default function AnalyticsPage() {
                             <div key={a.name} className="perf-item">
                                 <div className="perf-member">
                                     <span className="perf-avatar">
-                                        {isUploadedAvatar(a.avatar) ? (
+                                        {a.avatar && a.avatar.includes('supabase') ? (
                                             <img src={a.avatar} alt={a.name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
                                         ) : (
-                                            a.avatar || getInitials(a.name)
+                                            getInitials(a.name)
                                         )}
                                     </span>
                                     <span>{a.name}</span>

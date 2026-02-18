@@ -964,7 +964,7 @@ export default function TeamPage() {
             {/* Edit Member Modal */}
             {editingMember && (
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-                    <div className="glass-card animate-fade-in-up" style={{ padding: '2rem', width: '400px', maxWidth: '90%', background: '#1e1e2e', border: '1px solid var(--color-border)' }}>
+                    <div className="glass-card animate-fade-in-up" style={{ padding: '2rem', width: '400px', maxWidth: '95vw', background: '#1e1e2e', border: '1px solid var(--color-border)' }}>
                         <h3 style={{ marginBottom: '1.5rem' }}>{t('dashboard.team.editMember')}</h3>
                         <div style={{ margin: '1rem 0' }}>
                             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>{t('dashboard.team.namePlaceholder')}</label>
@@ -1018,7 +1018,7 @@ export default function TeamPage() {
                 >
                     <div
                         className="glass-card animate-fade-in-up"
-                        style={{ padding: '2.5rem', width: '450px', maxWidth: '90%', background: '#1e1e2e', border: '1px solid rgba(255,255,255,0.1)', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }}
+                        style={{ padding: '2.5rem', width: '450px', maxWidth: '95vw', background: '#1e1e2e', border: '1px solid rgba(255,255,255,0.1)', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }}
                         onClick={e => e.stopPropagation()}
                     >
                         <button

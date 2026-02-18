@@ -593,4 +593,138 @@
         width: 100%;
         max-width: 300px;
     }
+
+    .hero {
+        padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .features {
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .pricing {
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .mobile-app {
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .mobile-app-inner {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .footer {
+        padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    }
+
+    .footer-grid {
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .hero-badge {
+        font-size: var(--font-size-xs);
+        padding: 0.3rem 0.75rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-actions .btn {
+        max-width: 100%;
+    }
+
+    .feature-card {
+        padding: var(--spacing-lg);
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .feature-card h3 {
+        font-size: var(--font-size-lg);
+    }
+
+    .feature-card p {
+        font-size: var(--font-size-sm);
+    }
+
+    .pricing-card {
+        padding: var(--spacing-lg);
+    }
+
+    .pricing-price {
+        font-size: var(--font-size-3xl);
+    }
+
+    .mobile-app-inner {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .mobile-app-inner h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .mobile-app-inner p {
+        font-size: var(--font-size-sm);
+    }
+
+    .mobile-app-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+
+    .store-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .store-btn {
+        width: 100%;
+        min-width: auto;
+        justify-content: center;
+    }
+
+    .footer-col h4 {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .navbar-logo {
+        font-size: var(--font-size-lg);
+    }
+
+    .navbar-logo .logo-icon {
+        width: 28px;
+        height: 28px;
+        font-size: var(--font-size-xs);
+    }
 }
